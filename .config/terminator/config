@@ -7,67 +7,6 @@
   title_transmit_bg_color = "#002b36"
   title_transmit_fg_color = "#fdf6e3"
 [keybindings]
-[layouts]
-  [[default]]
-    [[[child0]]]
-      fullscreen = False
-      last_active_term = 209a8e59-3b20-4c69-8be7-bc9f3eee149b
-      last_active_window = True
-      maximised = True
-      order = 0
-      parent = ""
-      position = 49:24
-      size = 1551, 876
-      title = ~ | fish
-      type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 469
-      ratio = 0.538812785388
-      type = VPaned
-    [[[terminal2]]]
-      order = 0
-      parent = child1
-      profile = solarized-dark
-      type = Terminal
-      uuid = 7e236933-1209-427e-8135-18ad8ef4c176
-    [[[terminal3]]]
-      order = 1
-      parent = child1
-      profile = solarized-dark
-      type = Terminal
-      uuid = 209a8e59-3b20-4c69-8be7-bc9f3eee149b
-  [[Flair]]
-    [[[child0]]]
-      fullscreen = False
-      last_active_term = 209a8e59-3b20-4c69-8be7-bc9f3eee149b
-      last_active_window = True
-      maximised = True
-      order = 0
-      parent = ""
-      position = 49:24
-      size = 1551, 876
-      title = ~ | fish
-      type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 469
-      ratio = 0.538812785388
-      type = VPaned
-    [[[terminal2]]]
-      order = 0
-      parent = child1
-      profile = solarized-dark
-      type = Terminal
-      uuid = 7e236933-1209-427e-8135-18ad8ef4c176
-    [[[terminal3]]]
-      order = 1
-      parent = child1
-      profile = solarized-dark
-      type = Terminal
-      uuid = 209a8e59-3b20-4c69-8be7-bc9f3eee149b
 [plugins]
 [profiles]
   [[default]]

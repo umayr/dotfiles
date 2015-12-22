@@ -1,3 +1,0 @@
-[submodule ".vim/runtime"]
-	path = .vim/runtime
-	url = git@github.com:umayr/vimrc.git

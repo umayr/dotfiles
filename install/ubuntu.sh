@@ -53,7 +53,7 @@ function pckg {
 	for package in "${packages[@]}"
 	do
 	   echo "Executing >> apt-get install -y $package";
-	   sudo apt-get install -y ${package} # TODO: Remove `sudo`
+	   apt-get install -y ${package}
 	done
 }
 
@@ -68,15 +68,15 @@ function reps {
 	for repo in "${repositories[@]}"
 	do
    		echo "Adding PPA Repository >> $repo";
-   		sudo apt-add-repository -y ${repo} # TODO: Remove `sudo`
+   		apt-add-repository -y ${repo}
 	done
 }
 
 ## Add Keys for packages.
 function keys {
 	# Spotify
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886;
-	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886;
+	echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
 }
 
 ## Contains all the packages that needs to be installed manually.
@@ -87,7 +87,4 @@ function mpckg {
 }
 
 ## The Calling.
-sudo -v & keys & reps & pckg & mpckg;
-
-
-
+sudo -v && keys && reps && pckg && mpckg;

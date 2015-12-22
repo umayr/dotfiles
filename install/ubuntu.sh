@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-# Ask for the administrator password upfront.
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-function install_packages {
+## Installs all essential packages with apt-get.
+function pckg {
 	declare -a packages=(
 
 		# Necessary Libraries TODO: Check if they get installed via build-essential
@@ -58,11 +53,12 @@ function install_packages {
 	for package in "${packages[@]}"
 	do
 	   echo "Executing >> apt-get install -y $package";
-	   # apt-get install -y $package
+	   sudo apt-get install -y ${package} # TODO: Remove `sudo`
 	done
 }
 
-function add_ppa_repositories {
+## Add PPA repositories for various packages.
+function reps {
 	declare -a repositories=(
 			"ppa:fish-shell/release-2"
 			"ppa:gnome-terminator"
@@ -72,18 +68,26 @@ function add_ppa_repositories {
 	for repo in "${repositories[@]}"
 	do
    		echo "Adding PPA Repository >> $repo";
-   		apt-add-repository -y ${repo}
+   		sudo apt-add-repository -y ${repo} # TODO: Remove `sudo`
 	done
 }
 
-function add_keys {
+## Add Keys for packages.
+function keys {
 	# Spotify
-	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886;
-	echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886;
+	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 }
 
-function install_manual_packages {
+## Contains all the packages that needs to be installed manually.
+function mpckg {
 	# Install N to manage Node versions
 	curl -L http://git.io/n-install | bash;
 	n stable;
 }
+
+## The Calling.
+sudo -v & keys & reps & pckg & mpckg;
+
+
+

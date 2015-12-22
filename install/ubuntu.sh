@@ -12,12 +12,12 @@ function install_packages {
 		# Necessary Libraries TODO: Check if they get installed via build-essential
 		"libtinfo5 libc6 libncursesw5 libssl-dev"
 
-		# This will allow you to open up a terminal in whichever folder Nautilus File Manager is currently viewing. 
+		# This will allow you to open up a terminal in whichever folder Nautilus File Manager is currently viewing.
 		"nautilus-open-terminal"
-		
-		# The build-essential package contains all the headers that C/C++ need like <stdio.h> or <iostream.h>. 
+
+		# The build-essential package contains all the headers that C/C++ need like <stdio.h> or <iostream.h>.
 		"build-essential"
-		
+
 		# It allows you to shrink, expand, delete, change partitions of unmounted media.
 		"gparted"
 
@@ -32,10 +32,10 @@ function install_packages {
 
 		# Git and its utilities.
 		"git git-extras git-flow git-man tig"
-		
+
 		# System utils.
 		"lua tree lynx pv groff man htop"
-		
+
 		# One media player to rule them all.
 		"vlc"
 
@@ -45,8 +45,14 @@ function install_packages {
 		# Robot Terminal App.
 		"terminator"
 
+		# TMUX
+		"tmux"
+
 		# The most awesome shell.
 		"fish"
+
+		# Misc utilities
+		"ngrep tcpflow libwww-perl"
 	)
 
 	for package in "${packages[@]}"
@@ -66,8 +72,14 @@ function add_ppa_repositories {
 	for repo in "${repositories[@]}"
 	do
    		echo "Adding PPA Repository >> $repo";
-   		# apt-add-repository -y $repo
+   		apt-add-repository -y ${repo}
 	done
+}
+
+function add_keys {
+	# Mongo
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886;
+	echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
 }
 
 function install_manual_packages {

@@ -1,0 +1,9 @@
+# set theme to Dracula
+# installed manually in (bat --config-dir)/themes directory
+--theme Dracula
+
+# remove header
+--style numbers,changes
+
+# use italic if available
+--italic-text always
